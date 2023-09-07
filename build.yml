@@ -1,0 +1,51 @@
+name: Pipeline Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm i
+
+      # You can comment these if you app does not have tests
+      - name: Run unit tests and generate coverage report
+        run: |
+          npm run test -- --coverage
+          npm run coverage
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Check code duplication
+        run: npm run detect-duplicates
+
+      # Add more steps as needed for other checks or tests
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage
+
+      - name: Upload duplication report
+        uses: actions/upload-artifact@v2
+        with:
+          name: duplication
+          path: duplicate-report.html

@@ -1,3 +1,20 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@components/*": ["./lib/components/*"],
+      "@screens/*": ["./lib/screens/*"],
+      "@localization": ["./lib/localization"],
+      "@common/*": ["./lib/components/common/*"],
+      "@utils/*": ["./lib/utils/*"],
+      "@store/*": ["./lib/store/*"],
+      "@services/*": ["./lib/services/*"],
+      "@assets/*": ["./lib/assets/*"],
+      "@constants/*": ["./lib/constants/*"]
+    }
+  }
 }
