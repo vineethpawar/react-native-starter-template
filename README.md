@@ -1,4 +1,4 @@
-#Work In Progress
+# Work In Progress
 # React Native Quick Starter Boilerplate
 
 Welcome to the React Native Quick Starter Boilerplate! This repository is designed to jumpstart your React Native project with a set of essential features and integrations. With this boilerplate, you can quickly start building your React Native app with confidence.
